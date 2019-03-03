@@ -54,11 +54,14 @@
 	function resetPuzzlePieces() {
 		// empty the container!!! dont fill it up too much :(
 		piecesBoard.innerHTML = "";
-		createPuzzlePieces(this.dataset.puzzleref);		
-	}
+		createPuzzlePieces(this.dataset.puzzleref);
+		    var elements = document.getElementsByClassName("puzzle-image");
+    			while(elements.length > 4){
+        		elements[4].parentNode.removeChild(elements[4]);
+    }
+}
 
 	puzzleSelectors.forEach(puzzle => puzzle.addEventListener("click", resetPuzzlePieces));
-
-	createPuzzlePieces(0);
+	createPuzzlePieces(1);
 	
 })();
