@@ -45,7 +45,17 @@
 			e.preventDefault();
 			console.log('ouch! you dropped me!');
 
-			let piece = e.dataTransfer.getData("text/plain");
+			let prevDrop = e.target;
+				while (prevDrop !== 0 && !prevDrop.classList.contains("drop-zone")) {
+				prevDrop = prevDrop.parentNode;
+			}
+
+			if (prevDrop && prevDrop.childNodes.length > 0) {
+				return false;
+				e.preventDefault();
+			}
+
+ 			let piece = e.dataTransfer.getData("text/plain");
 			e.target.appendChild(document.querySelector(`#${piece}`));
 		});
 	});
